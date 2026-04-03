@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Global Geopolitical Risk Dashboard</h1>
+    <main class="dashboard">
+        <!-- news section (실시간 해드라인 몇 개 ) -->
+        <section class="news">
+            <h2>news section</h2>
+            <ul>
+                <li>headline1</li>
+                <li>headline2</li>
+                <li>headline3</li>
+                <li>headline4</li>
+            </ul>
+        </section>
+
+        <!-- economy section (금, 유가, 환율, 주가지수) -->
+        <section class="economy">
+            <h2>economy section</h2>
+            <div class="currency">
+                <form action="/exchange" method="POST">
+                    <select name="base" required>
+                        <option value="" disabled selected>Select base currency</option>
+                        {% for label, name in currency_list %}
+                        <option value="{{ label }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <span>to</span>
+                    
+                    <select name="target" required>
+                        <option value="" disabled selected>Select target currency</option>
+                        {% for label, name in currency_list %}
+                        <option value="{{ label }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                        <button type="submit">check</button>
+                </form>
+            </div>
+            <div class="exchanged_value">{{exchanged_value}}</div>
+        </section>
+
+        <!-- risk score -->
+        <section class="risk">
+            <h2>risk scores</h2>
+        </section>
+    </main>
+</body>
+</html>
